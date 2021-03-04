@@ -32,9 +32,9 @@ public class Exemple6Service extends MenuService {
 		
 		
 		List<Selectable> vehicules = new ArrayList<>();
-		vehicules.add(new Vehicule(1L, "AA-552-CD", "Peugeot", "208"));
-		vehicules.add(new Vehicule(2L, "AW-227-XE", "Peugeot", "3008"));
-		vehicules.add(new Vehicule(3L, "XX-131-XT", "Peugeot", "3008"));
+//		vehicules.add(new Vehicule(1L, "AA-552-CD", "Peugeot", "208"));
+//		vehicules.add(new Vehicule(2L, "AW-227-XE", "Peugeot", "3008"));
+//		vehicules.add(new Vehicule(3L, "XX-131-XT", "Peugeot", "3008"));
 		
 		// Champ de type liste de sélection
 		form.addInput(new ComboBox("Liste de véhicules:", "vehicule", vehicules, vehicules.get(2)));
