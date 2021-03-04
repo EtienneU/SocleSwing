@@ -27,28 +27,26 @@ public class PermisConduire {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "TYPE")
+	@Column(name = "TYPE", nullable = false)
 	private String type;
 	
-	@Column(name = "NUMERO")
+	@Column(name = "NUMERO", nullable = false)
 	private String numero;
 	
-	@Column(name = "DATE_OBTENTION")
+	@Column(name = "DATE_OBTENTION", nullable = false)
 	private Date dateObtention;
 	
-	@OneToOne
-	@JoinColumn(name = "ID_CLIENT")
+	@OneToOne(mappedBy = "permisDeConduire")
 	private Client client;
 	
 	public PermisConduire() {
 		
 	}
 	
-	public PermisConduire(String type, String numero, Date dateObtention, Client client) {
+	public PermisConduire(String type, String numero, Date dateObtention) {
 		this.type = type;
 		this.numero = numero;
 		this.dateObtention = dateObtention;
-		this.client = client;
 	}
 
 	public Integer getId() {

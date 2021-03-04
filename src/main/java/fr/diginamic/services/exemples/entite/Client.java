@@ -40,13 +40,13 @@ public class Client {
 	private Adresse adresse;
 	
 	@Column(name = "NUM_TEL", nullable = false, unique = true)
-	private Integer numTel;
+	private String numTel;
 	
 	@Column(name = "E_MAIL", nullable = false)
 	private String email;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_PERMIS")
+	@JoinColumn(name = "ID_PERMIS", nullable = false)
 	private PermisConduire permisDeConduire;
 	
 	@OneToMany
@@ -59,6 +59,16 @@ public class Client {
 	
 	public Client() {
 	}
+
+	public Client(String nom, String prenom, Adresse adresse, String numTel, String email) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.numTel = numTel;
+		this.email = email;
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -92,11 +102,11 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Integer getNumTel() {
+	public String getNumTel() {
 		return numTel;
 	}
 
-	public void setNumTel(Integer numTel) {
+	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
 

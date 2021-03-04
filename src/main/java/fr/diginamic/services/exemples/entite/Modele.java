@@ -43,10 +43,9 @@ public class Modele {
 		
 	}
 
-	public Modele(String nom, Marque marque, Set<Vehicule> vehicules) {
+	public Modele(String nom, Marque marque) {
 		this.nom = nom;
 		this.marque = marque;
-		this.vehicules = vehicules;
 	}
 
 	public Integer getId() {
