@@ -29,35 +29,36 @@ public class Facture {
 	@Column(name = "RECAP_RESA")
 	private String recapResa;
 	
-	@Column(name = "NUMERO")
+	@Column(name = "NUMERO", nullable = false, unique = true)
 	private String numero;
 	
-	@Column(name = "MONTANT")
+	@Column(name = "MONTANT", nullable = false)
 	private Double montant;
 	
-	@Column(name = "STATUT_PAYE")
+	@Column(name = "STATUT_PAYE", nullable = false)
 	private Boolean statutPaye;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_CLIENT")
+	@JoinColumn(name = "ID_CLIENT", nullable = false)
 	private Client client;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_RESERVATION")
+	@JoinColumn(name = "ID_RESERVATION", nullable = false)
 	private Reservation reservation;	
 	
 	public Facture() {
-		
 	}
 
-	public Facture(String recapResa, String numero, Double montant, Boolean statutPaye, 
+	public Facture(String numero, Double montant, Boolean statutPaye, 
 			Client client, Reservation reservation) {
-		this.recapResa = recapResa;
 		this.numero = numero;
 		this.montant = montant;
 		this.statutPaye = statutPaye;
 		this.client = client;
 		this.reservation = reservation;
+		this.recapResa = client.getNom().toUpperCase() + " " + client.getPrenom() 
+			+ " emprunte le véhicule suivant : " + reservation.getVehicule().getTypeVehicule() 
+			+ " immatriculation " + reservation.getVehicule().getImmatriculation();
 	}
 
 	public Integer getId() {

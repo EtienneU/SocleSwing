@@ -28,6 +28,7 @@ public class TypeCamion {
 	protected Integer id;
 
 	@Column(name = "NOM")
+	// déménagement, frigorifique...
 	protected String nom;
 	
 	@Column(name = "TARIF_JOUR")
@@ -40,6 +41,13 @@ public class TypeCamion {
 	private Set<Camion> camions = new HashSet<Camion>(); 
 	
 	public TypeCamion() {
+	}
+
+	public TypeCamion(String nom, Double tarifJour, Double montantCaution) {
+		super();
+		this.nom = nom;
+		this.tarifJour = tarifJour;
+		this.montantCaution = montantCaution;
 	}
 
 	public Integer getId() {

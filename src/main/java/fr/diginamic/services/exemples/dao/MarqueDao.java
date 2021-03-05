@@ -31,8 +31,8 @@ public class MarqueDao extends AbstractDao {
 		List<Marque> marqueDB = query.getResultList();
 		if (marqueDB == null || marqueDB.isEmpty()) {
 			em.persist(marque);
-		} else { // Si le marque existe déjà en DB
-			// Il faut absolument que le marque ait un id, sinon erreur "transient instance"
+		} else { // Si la marque existe déjà en DB
+			// Il faut absolument que la marque ait un id, sinon erreur "transient instance"
 			marque.setId(marqueDB.get(0).getId());
 		}
 	}

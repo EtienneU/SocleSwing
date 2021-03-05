@@ -28,6 +28,7 @@ public class TypeVoiture {
 	protected Integer id;
 
 	@Column(name = "NOM")
+	// sport, berline, cabriolet...
 	protected String nom;
 	
 	@Column(name = "TARIF_JOUR")
@@ -40,6 +41,12 @@ public class TypeVoiture {
 	private Set<Voiture> voitures = new HashSet<Voiture>(); 
 	
 	public TypeVoiture() {
+	}
+
+	public TypeVoiture(String nom, Double tarifJour, Double montantCaution) {
+		this.nom = nom;
+		this.tarifJour = tarifJour;
+		this.montantCaution = montantCaution;
 	}
 
 	public Integer getId() {

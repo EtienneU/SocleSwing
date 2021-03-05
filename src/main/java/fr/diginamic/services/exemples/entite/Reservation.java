@@ -7,6 +7,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,26 +64,21 @@ public class Reservation {
 	private Facture facture;
 	
 	@Column(name = "TYPE_REGLEMENT")
+	@Enumerated(EnumType.STRING)
 	private Reglement typeReglement;
 	
 	public Reservation() {
 		
 	}
 
-	public Reservation(Client client, Vehicule vehicule, Boolean statutTerminee, Date dateDebut, Integer kmDebut,
-			Date dateFinPrevue, Date dateFinReelle, Integer kmFin, String commentaire, Facture facture,
-			Reglement typeReglement) {
+	public Reservation(Client client, Vehicule vehicule, Boolean statutTerminee, Date dateDebut,
+			Integer kmDebut, Date dateFinPrevue) {
 		this.client = client;
 		this.vehicule = vehicule;
 		this.statutTerminee = statutTerminee;
 		this.dateDebut = dateDebut;
 		this.kmDebut = kmDebut;
 		this.dateFinPrevue = dateFinPrevue;
-		this.dateFinReelle = dateFinReelle;
-		this.kmFin = kmFin;
-		this.commentaire = commentaire;
-		this.facture = facture;
-		this.typeReglement = typeReglement;
 	}
 
 	public Integer getId() {

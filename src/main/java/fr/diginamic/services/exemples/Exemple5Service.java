@@ -17,8 +17,9 @@ import fr.diginamic.services.exemples.entite.Personne;
 
 public class Exemple5Service extends MenuService {
 
-//	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2-mem");
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2-mem");
+//	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-location-voiture");
+
 
 	private void initDatabase() {
 		EntityManager em = emf.createEntityManager();

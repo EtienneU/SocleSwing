@@ -47,9 +47,8 @@ public class ClientDao extends AbstractDao {
 	}
 	
 	public List<Client> findByContains(String terme) {
-		TypedQuery<Client> query = em.createQuery("SELECT c FROM Client c WHERE c.nom LIKE ?1 OR c.prenom LIKE ?2", Client.class);
+		TypedQuery<Client> query = em.createQuery("SELECT c FROM Client c WHERE c.nom LIKE ?1 OR c.prenom LIKE ?1", Client.class);
 		query.setParameter(1, "%" + terme + "%");
-		query.setParameter(2, "%" + terme + "%");
 		return query.getResultList();
 	}
 

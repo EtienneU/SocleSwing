@@ -19,7 +19,7 @@ public class ComboBox extends Input {
 	private Selectable selectedItem;
 	
 	/** value */
-	private Long id;
+	private Integer id;
 	
 	/** Constructeur
 	 * @param label libellé
@@ -56,7 +56,7 @@ public class ComboBox extends Input {
 
 	@Override
 	public String getValue() {
-		return Long.toString(id);
+		return Integer.toString(id);
 	}
 	
 	@Override

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +33,7 @@ public class Vehicule implements Selectable {
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	protected Integer id;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_MARQUE")
@@ -41,10 +43,15 @@ public class Vehicule implements Selectable {
 	@JoinColumn(name = "ID_MODELE")
 	protected Modele modele;
 	
+	@Column(name = "TYPE_VEHICULE")
+	@Enumerated(EnumType.STRING)
+	protected TypeVehicule typeVehicule;
+	
 	@Column(name = "IMMATRICULATION")
 	protected String immatriculation;
 	
 	@Column(name = "STATUT")
+	@Enumerated(EnumType.STRING)
 	protected Statut statut;
 	
 	@OneToMany(mappedBy = "vehicule")
@@ -64,15 +71,13 @@ public class Vehicule implements Selectable {
 		
 	}
 	
-	public Vehicule(String immatriculation, Marque marque, Modele modele) {
-		super();
-		this.immatriculation = immatriculation;
+	public Vehicule(Marque marque, Modele modele, String immatriculation) {
 		this.marque = marque;
 		this.modele = modele;
+		this.immatriculation = immatriculation;
 	}
 
-	public Vehicule(Long id, String immatriculation, Marque marque, Modele modele) {
-		super();
+	public Vehicule(Integer id, String immatriculation, Marque marque, Modele modele) {
 		this.id = id;
 		this.immatriculation = immatriculation;
 		this.marque = marque;
@@ -96,13 +101,13 @@ public class Vehicule implements Selectable {
 	/**
 	 * @return l'id
 	 */
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id l'id à modifier
 	 */
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
@@ -200,6 +205,14 @@ public class Vehicule implements Selectable {
 	 */
 	public void setAgence(Agence agence) {
 		this.agence = agence;
+	}
+
+	public TypeVehicule getTypeVehicule() {
+		return typeVehicule;
+	}
+
+	public void setTypeVehicule(TypeVehicule typeVehicule) {
+		this.typeVehicule = typeVehicule;
 	}
 
 }

@@ -26,10 +26,18 @@ public class Camion extends Vehicule {
 	
 	public Camion() {
 		super();
+		this.typeVehicule = TypeVehicule.CAMION;
 	}
 
-	public Camion(String immatriculation, Marque marque, Modele modele) {
-		super(immatriculation, marque, modele);
+	public Camion(Marque marque, Modele modele, String immatriculation, Statut statut, 
+			Integer kilometrage, Agence agence, Byte volume, TypeCamion typeCamion) {
+		super(marque, modele, immatriculation);
+		this.typeVehicule = TypeVehicule.CAMION;
+		this.statut = statut;
+		this.kilometrage = kilometrage;
+		this.agence = agence;
+		this.volume = volume;
+		this.typeCamion = typeCamion;
 	}
 
 	public byte getVolume() {

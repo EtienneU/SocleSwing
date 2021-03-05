@@ -43,11 +43,10 @@ public class Agence {
 		
 	}
 
-	public Agence(String nom, Double chiffreDaffaire, Double charges, Set<Vehicule> vehicules) {
+	public Agence(String nom, Double chiffreDaffaire, Double charges) {
 		this.nom = nom;
 		this.chiffreDaffaire = chiffreDaffaire;
 		this.charges = charges;
-		this.vehicules = vehicules;
 	}
 
 	public Integer getId() {

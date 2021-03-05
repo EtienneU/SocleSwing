@@ -17,13 +17,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import fr.diginamic.composants.ui.Selectable;
+
 /**
  * @author EtienneUrbano
  *
  */
 @Entity
 @Table(name="CLIENT")
-public class Client {
+public class Client implements Selectable {
 	
 	@Id
 	@Column(name = "ID")
@@ -49,12 +51,10 @@ public class Client {
 	@JoinColumn(name = "ID_PERMIS", nullable = false)
 	private PermisConduire permisDeConduire;
 	
-	@OneToMany
-	@JoinColumn(name = "client")
+	@OneToMany(mappedBy = "client")
 	private Set <Facture> factures = new HashSet<Facture>();
 	
-	@OneToMany
-	@JoinColumn(name = "client")
+	@OneToMany(mappedBy = "client")
 	private Set <Reservation> reservations = new HashSet<Reservation>();
 	
 	public Client() {
@@ -68,7 +68,11 @@ public class Client {
 		this.email = email;
 	}
 
-
+	@Override
+	public String toString() {
+		return nom.toUpperCase() + " " + prenom + " - "
+				+ numTel + " - " + email + " - " + adresse;
+	}
 
 	public Integer getId() {
 		return id;

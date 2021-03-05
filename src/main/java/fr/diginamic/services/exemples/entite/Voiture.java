@@ -26,10 +26,18 @@ public class Voiture extends Vehicule {
 	
 	public Voiture() {
 		super();
+		this.typeVehicule = TypeVehicule.VOITURE;
 	}
 
-	public Voiture(String immatriculation, Marque marque, Modele modele) {
-		super(immatriculation, marque, modele);
+	public Voiture(Marque marque, Modele modele, String immatriculation, Statut statut, 
+			Integer kilometrage, Agence agence, Byte nbPlaces, TypeVoiture typeVoiture) {
+		super(marque, modele, immatriculation);
+		this.typeVehicule = TypeVehicule.VOITURE;
+		this.statut = statut;
+		this.kilometrage = kilometrage;
+		this.agence = agence;
+		this.nbPlaces = nbPlaces;
+		this.typeVoiture = typeVoiture;
 	}
 
 	public Byte getNbPlaces() {
