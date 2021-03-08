@@ -116,13 +116,7 @@ public abstract class AbstractApplication extends JFrame {
 					currentMenuService = menuService;
 
 					TraitementMenu tt = new TraitementMenu(menuService);
-					try {
-						threadService.submit(tt).get();
-					} catch (InterruptedException | ExecutionException e1) {
-						System.out.println(e1.getMessage());
-						e1.printStackTrace();
-						ErrorManager.manage(e1.getMessage(), e1);
-					}
+					threadService.submit(tt);
 				}
 
 				@Override

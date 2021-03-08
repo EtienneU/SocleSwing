@@ -60,7 +60,7 @@ public class TestConnexion {
 		
 		//Client
 		Adresse 		adresse1 	 = new Adresse(14, "route du Moulin", 69005, "Lyon");
-		Client 			client1 	 = new Client("Moustier", "Celine", adresse1, "0945675432", "c.moustier@zig.com");
+		Client 			client1 	 = new Client("Moustier", "Celine", "0945675432", "c.moustier@zig.com");
 		PermisConduire 	permis1 	 = new PermisConduire("B", "Ed35288647", new Date(110, 5, 6));
 		
 		// Voiture
@@ -96,6 +96,7 @@ public class TestConnexion {
 		PermisDao permisDao = new PermisDao(em);
 		permisDao.insert(permis1);
 		ClientDao clientDao = new ClientDao(em);
+		client1.setAdresse(adresse1);
 		client1.setPermisDeConduire(permis1);
 		client1.getFactures().add(facture1);
 		client1.getReservations().add(resa1);

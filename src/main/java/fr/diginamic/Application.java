@@ -8,6 +8,7 @@ import fr.diginamic.services.exemples.Exemple3Service;
 import fr.diginamic.services.exemples.Exemple4Service;
 import fr.diginamic.services.exemples.Exemple5Service;
 import fr.diginamic.services.exemples.Exemple6Service;
+import fr.diginamic.services.exemples.ServiceClients;
 
 /**
  * Fenêtre principale qui porte les principaux composants graphiques de
@@ -36,18 +37,21 @@ public class Application extends AbstractApplication {
 	 */
 	public void main() {
 		addMenu(1, "File");
-		addMenu(2, "Gestion clients");
-		addMenu(3, "Exemples");
+		addMenu(2, "Exemples");
+		addMenu(3, "Gestion des clients");
+		addMenu(4, "Gestion des véhicules");
 		
 		addMenuOption(1, "Aide", new AideService());
 		
 		//addMenuOption(2, "Liste des clients", new AideService());
 		
-		addMenuOption(3, "Exemple 1 - Titres", new Exemple1Service());
-		addMenuOption(3, "Exemple 2 - Textes de couleur", new Exemple2Service());
-		addMenuOption(3, "Exemple 3 - Table", new Exemple3Service());
-		addMenuOption(3, "Exemple 4 - Table avec liens vers méthodes", new Exemple4Service());
-		addMenuOption(3, "Exemple 5 - Table dynamique", new Exemple5Service());
-		addMenuOption(3, "Exemple 6 - Formulaire", new Exemple6Service());
+		addMenuOption(2, "Exemple 1 - Titres", new Exemple1Service());
+		addMenuOption(2, "Exemple 2 - Textes de couleur", new Exemple2Service());
+		addMenuOption(2, "Exemple 3 - Table", new Exemple3Service());
+		addMenuOption(2, "Exemple 4 - Table avec liens vers méthodes", new Exemple4Service());
+		addMenuOption(2, "Exemple 5 - Table dynamique", new Exemple5Service());
+		addMenuOption(2, "Exemple 6 - Formulaire", new Exemple6Service());
+		
+		addMenuOption(3, "Lister et gérer les clients", new ServiceClients());
 	}
 }

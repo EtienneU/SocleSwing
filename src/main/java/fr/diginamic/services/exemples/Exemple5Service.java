@@ -14,12 +14,11 @@ import fr.diginamic.composants.db.SqlUtils;
 import fr.diginamic.composants.ui.Form;
 import fr.diginamic.composants.ui.TextField;
 import fr.diginamic.services.exemples.entite.Personne;
+import fr.diginamic.services.exemples.validators.Exemple5FormValidator;
 
 public class Exemple5Service extends MenuService {
 
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2-mem");
-//	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-location-voiture");
-
 
 	private void initDatabase() {
 		EntityManager em = emf.createEntityManager();

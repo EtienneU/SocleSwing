@@ -1,4 +1,4 @@
-package fr.diginamic.services.exemples;
+package fr.diginamic.services.exemples.validators;
 
 import fr.diginamic.composants.ui.Form;
 import fr.diginamic.composants.validator.FormValidator;
@@ -11,8 +11,8 @@ public class Exemple5FormValidator extends FormValidator {
 
 	@Override
 	public boolean validate(Form form) {
-		String nvNom = form.getValue("champ1");
-		String nvPrenom = form.getValue("champ2");
+		String nvNom = form.getValue("champNom");
+		String nvPrenom = form.getValue("champPrenom");
 		
 		if (nvNom.trim().isEmpty()) {
 			console.alert("Le nom est obligatoire !");

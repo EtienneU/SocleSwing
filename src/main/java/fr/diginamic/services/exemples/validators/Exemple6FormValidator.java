@@ -1,4 +1,4 @@
-package fr.diginamic.services.exemples;
+package fr.diginamic.services.exemples.validators;
 
 import fr.diginamic.composants.ui.Form;
 import fr.diginamic.composants.validator.FormValidator;

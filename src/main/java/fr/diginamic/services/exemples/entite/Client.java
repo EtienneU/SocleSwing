@@ -48,7 +48,7 @@ public class Client implements Selectable {
 	private String email;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_PERMIS", nullable = false)
+	@JoinColumn(name = "ID_PERMIS")
 	private PermisConduire permisDeConduire;
 	
 	@OneToMany(mappedBy = "client")
@@ -60,12 +60,19 @@ public class Client implements Selectable {
 	public Client() {
 	}
 
+	public Client(String nom, String prenom, String numTel, String email) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.numTel = numTel;
+		this.email = email;
+	}
+	
 	public Client(String nom, String prenom, Adresse adresse, String numTel, String email) {
 		this.nom = nom;
 		this.prenom = prenom;
-		this.adresse = adresse;
 		this.numTel = numTel;
 		this.email = email;
+		this.adresse = adresse;
 	}
 
 	@Override

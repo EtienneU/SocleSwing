@@ -11,21 +11,21 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="javax.persistence.schema-generation.database.action" value="update"/>
 		</properties>
 	</persistence-unit>
 	
 	<persistence-unit name="pu-location-voiture" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
-					<!-- desactiver l'autodetection des classes de type @Entity -->
+			<!-- desactiver l'autodetection des classes de type @Entity -->
 <!-- 			<property name="hibernate.archive.autodetection" value="" /> -->
 
 			<!-- Activation de la génération des tables manquantes uniquement -->
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
 
 			<!-- Drop and create à chaque redémarrage -->
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+<!-- 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" /> -->
 			
 			<!-- Paramètres d'accès à la BDD -->
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/location_vehicule" />
@@ -36,7 +36,6 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
 			<!-- Affichage des requêtes SQL -->
 			<property name="hibernate.show_sql" value="true" />
 			
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		</properties>
 	</persistence-unit>
 </persistence>

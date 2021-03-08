@@ -11,6 +11,7 @@ import fr.diginamic.composants.ui.Form;
 import fr.diginamic.composants.ui.Selectable;
 import fr.diginamic.composants.ui.TextField;
 import fr.diginamic.services.exemples.entite.Vehicule;
+import fr.diginamic.services.exemples.validators.Exemple6FormValidator;
 
 public class Exemple6Service extends MenuService {
 

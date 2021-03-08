@@ -25,8 +25,8 @@ public class ClientDao extends AbstractDao {
 
 	public void insert(Client client) {
 		
-		Query query = em.createQuery("SELECT c FROM Client c WHERE c.nom = ?1");
-		query.setParameter(1, client.getNom());
+		Query query = em.createQuery("SELECT c FROM Client c WHERE c.email = ?1");
+		query.setParameter(1, client.getEmail());
 	    query.setMaxResults(1);
 		List<Client> clientDB = query.getResultList();
 		if (clientDB == null || clientDB.isEmpty()) {
@@ -52,9 +52,9 @@ public class ClientDao extends AbstractDao {
 		return query.getResultList();
 	}
 
-	public void updateNom(Client client) {		
+	public void updateNom(Client client, String nom) {		
 		Client clientDB = findById(client.getId());
-		clientDB.setNom(client.getNom());
+		clientDB.setNom(nom);
 	}
 
 	public void delete(Client client) {

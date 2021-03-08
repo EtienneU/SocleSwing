@@ -13,16 +13,16 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Adresse {
 
-	@Column(name="NUMERO_RUE", nullable = false)
+	@Column(name="NUMERO_RUE")
 	private Integer numeroRue;
 	
-	@Column(name="LIBELLE_RUE", nullable = false)
+	@Column(name="LIBELLE_RUE")
 	private String rue;
 	
-	@Column(name="CODE_POSTAL", nullable = false)
+	@Column(name="CODE_POSTAL")
 	private Integer codePostal;
 	
-	@Column(name="VILLE", nullable = false)
+	@Column(name="VILLE")
 	private String ville;
 	
 	public Adresse() {
