@@ -12,7 +12,7 @@ public enum Statut {
 
 	DISPONIBLE		("Disponible"),
 	LOUE			("Liquide"),
-	EN_MAINTENANCE	("EnMaintenance");
+	EN_MAINTENANCE	("En_Maintenance");
 	
 	private String libelle;
 	
@@ -27,7 +27,8 @@ public enum Statut {
 				return s;
 			}
 		}
-		return null;
+		// Le retour par defaut
+		return EN_MAINTENANCE;
 	}
 
 	public String getLibelle() {

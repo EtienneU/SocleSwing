@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import fr.diginamic.services.exemples.entite.Modele;
 import fr.diginamic.services.exemples.entite.TypeCamion;
 
 /**
@@ -44,6 +45,16 @@ public class TypeCamionDao extends AbstractDao {
 	
 	public TypeCamion findById(int id) {
 		return em.find(TypeCamion.class, id);
+	}
+	
+	public TypeCamion findByNom(String nom) {
+		TypedQuery<TypeCamion> query = em.createQuery("SELECT tc FROM TypeCamion tc WHERE tc.nom LIKE ?1", TypeCamion.class);
+		query.setParameter(1, "%" + nom + "%");
+		List<TypeCamion> result = query.getResultList();
+		if (result.size() > 0) {
+			return result.get(0);
+		} 
+		return null;
 	}
 	
 	public List<TypeCamion> findByContains(String terme) {

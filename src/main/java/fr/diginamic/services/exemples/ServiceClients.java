@@ -1,6 +1,5 @@
 package fr.diginamic.services.exemples;
 
-import java.awt.Color;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import fr.diginamic.composants.MenuService;
-import fr.diginamic.composants.db.SqlUtils;
 import fr.diginamic.composants.ui.Form;
 import fr.diginamic.composants.ui.TextField;
 import fr.diginamic.services.exemples.dao.AgenceDao;
@@ -35,21 +33,28 @@ import fr.diginamic.services.exemples.entite.Maintenance;
 import fr.diginamic.services.exemples.entite.Marque;
 import fr.diginamic.services.exemples.entite.Modele;
 import fr.diginamic.services.exemples.entite.PermisConduire;
-import fr.diginamic.services.exemples.entite.Personne;
 import fr.diginamic.services.exemples.entite.Reservation;
 import fr.diginamic.services.exemples.entite.Statut;
 import fr.diginamic.services.exemples.entite.TypeCamion;
 import fr.diginamic.services.exemples.entite.TypeVoiture;
 import fr.diginamic.services.exemples.entite.Voiture;
 import fr.diginamic.services.exemples.validators.ClientsFormValidator;
-import fr.diginamic.services.exemples.validators.Exemple5FormValidator;
 
 public class ServiceClients extends MenuService {
 
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-location-voiture");
 
 	// Initialisation de la BD
-	private void initDatabase() {
+//		private void initDB() {
+//			EntityManager em = emf.createEntityManager();
+//			TypedQuery<Personne> query = em.createQuery("SELECT p FROM Personne p", Personne.class);
+//			List<Personne> clients = query.getResultList();
+//			if (clients.size() == 0) {
+//				SqlUtils.executeFile("exemple.sql", em);
+//			}
+//		}
+
+	public void initDB() {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction transac = em.getTransaction();
 
@@ -139,17 +144,9 @@ public class ServiceClients extends MenuService {
 
 	}
 
-//	private void initDatabase() {
-//		EntityManager em = emf.createEntityManager();
-//		TypedQuery<Personne> query = em.createQuery("SELECT p FROM Personne p", Personne.class);
-//		List<Personne> clients = query.getResultList();
-//		if (clients.size() == 0) {
-//			SqlUtils.executeFile("exemple.sql", em);
-//		}
-//	}
-
 	/**
 	 * Méthode appelée lors du clic sur le menu "Lister et gérer les clients"
+	 * Ou appelée en fin de méthode CRUD
 	 * Elle réalise l'extraction et l'affichage des clients de la DB
 	 * 
 	 * @param aucun
@@ -160,7 +157,7 @@ public class ServiceClients extends MenuService {
 		EntityManager em = emf.createEntityManager();
 
 		// initDatabase() permet d'initialiser la base avec des données de tests
-		initDatabase();
+		initDB();
 
 		TypedQuery<Client> query = em.createQuery("SELECT c FROM Client c", Client.class);
 		List<Client> clients = query.getResultList();
@@ -197,10 +194,10 @@ public class ServiceClients extends MenuService {
 	}
 
 	/**
-	 * Méthode appelée lorsque l'utilisateur clique sur une icone de modification
-	 * dans la table des clients.
+	 * Méthode appelée lorsque l'utilisateur clique sur le bouton 'creer un nouveau client'
+	 * Elle permet d'ajouter un client en DB
 	 * 
-	 * @param id identifiant du client à modifier.
+	 * @param aucun
 	 */
 	public void creer() {
 
@@ -250,8 +247,7 @@ public class ServiceClients extends MenuService {
 
 		EntityManager em = emf.createEntityManager();
 		Client c = em.find(Client.class, id);
-		ClientDao clientDao = new ClientDao(em);
-
+		
 		// On commence par créér le formulaire vide
 		Form form = new Form();
 
@@ -286,10 +282,13 @@ public class ServiceClients extends MenuService {
 			
 			c.setNom(nvNom);
 			c.setPrenom(nvPrenom);
+			c.setEmail(nvEmail);
+			c.setNumTel(nvNumTel);
 			c.getAdresse().setNumero(Integer.parseInt(nvNumero));
 			c.getAdresse().setCodePostal(Integer.parseInt(nvCP));
 			c.getAdresse().setRue(nvRue);
 			c.getAdresse().setVille(nvVille);
+			
 			transaction.commit();
 
 			traitement();
@@ -303,14 +302,17 @@ public class ServiceClients extends MenuService {
 	 * @param id identifiant du client à supprimer.
 	 */
 	public void supprimer(Integer id) {
-		boolean result = console.confirm("Suppression de l'item " + id,
-				"Confirmez-vous la suppression de l'item n°" + id);
-		
-		System.out.println("Clic sur bouton \"suppression du client\"");
 		EntityManager em = emf.createEntityManager();
 		ClientDao clientDao = new ClientDao(em);
-
 		
+		Client clientDB = clientDao.findById(id);
+		String identite = clientDB.getPrenom() + " " + clientDB.getNom().toUpperCase();
+		
+		boolean result = console.confirm("Suppression du client " + identite,
+				"Confirmez-vous la suppression de " + identite + " ?");
+		
+		System.out.println("Clic sur bouton \"suppression du client\"");
+
 		if (result) {
 			Client c = em.find(Client.class, id);
 			EntityTransaction transaction = em.getTransaction();

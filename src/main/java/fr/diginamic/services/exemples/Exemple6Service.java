@@ -19,7 +19,7 @@ public class Exemple6Service extends MenuService {
 	public void traitement() {
 
 		console.clear();
-		console.print("<h1 class='bg-turquoise'><center>Titre avec fond bleu clair</center></h1>");
+		console.println("<h1 class='bg-turquoise'><center>Titre avec fond bleu clair</center></h1>");
 
 		// On commence par créér le formulaire vide
 		Form form = new Form();
@@ -38,7 +38,7 @@ public class Exemple6Service extends MenuService {
 //		vehicules.add(new Vehicule(3L, "XX-131-XT", "Peugeot", "3008"));
 		
 		// Champ de type liste de sélection
-		form.addInput(new ComboBox("Liste de véhicules:", "vehicule", vehicules, vehicules.get(2)));
+		form.addInput(new ComboBox("Liste de véhicules:", "vehicule", vehicules, vehicules.get(0)));
 
 		// Création d'un validator qui stocke les règles de gestion
 		Exemple6FormValidator validator = new Exemple6FormValidator();

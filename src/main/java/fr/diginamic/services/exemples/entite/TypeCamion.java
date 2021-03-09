@@ -44,8 +44,7 @@ public class TypeCamion {
 	}
 
 	public TypeCamion(String nom, Double tarifJour, Double montantCaution) {
-		super();
-		this.nom = nom;
+		this.nom = nom.toLowerCase();
 		this.tarifJour = tarifJour;
 		this.montantCaution = montantCaution;
 	}

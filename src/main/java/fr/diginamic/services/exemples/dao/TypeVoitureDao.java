@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import fr.diginamic.services.exemples.entite.TypeCamion;
 import fr.diginamic.services.exemples.entite.TypeVoiture;
 
 /**
@@ -44,6 +45,16 @@ public class TypeVoitureDao extends AbstractDao {
 	
 	public TypeVoiture findById(int id) {
 		return em.find(TypeVoiture.class, id);
+	}
+	
+	public TypeVoiture findByNom(String nom) {
+		TypedQuery<TypeVoiture> query = em.createQuery("SELECT tv FROM TypeVoiture tv WHERE tv.nom LIKE ?1", TypeVoiture.class);
+		query.setParameter(1, "%" + nom + "%");
+		List<TypeVoiture> result = query.getResultList();
+		if (result.size() > 0) {
+			return result.get(0);
+		} 
+		return null;
 	}
 	
 	public List<TypeVoiture> findByContains(String terme) {

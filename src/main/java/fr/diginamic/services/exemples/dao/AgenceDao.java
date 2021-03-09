@@ -46,6 +46,16 @@ public class AgenceDao extends AbstractDao {
 		return em.find(Agence.class, id);
 	}
 	
+	public Agence findByNom(String nom) {
+		TypedQuery<Agence> query = em.createQuery("SELECT a FROM Agence a WHERE a.nom LIKE ?1", Agence.class);
+		query.setParameter(1, "%" + nom.trim() + "%");
+		List<Agence> result = query.getResultList();
+		if (result.size() > 0) {
+			return result.get(0);
+		} 
+		return null;
+	}
+	
 	public List<Agence> findByContains(String terme) {
 		TypedQuery<Agence> query = em.createQuery("SELECT a FROM Agence a WHERE a.nom LIKE ?1", Agence.class);
 		query.setParameter(1, "%" + terme + "%");

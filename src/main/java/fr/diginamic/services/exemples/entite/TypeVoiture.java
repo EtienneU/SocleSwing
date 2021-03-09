@@ -44,7 +44,7 @@ public class TypeVoiture {
 	}
 
 	public TypeVoiture(String nom, Double tarifJour, Double montantCaution) {
-		this.nom = nom;
+		this.nom = nom.toLowerCase();
 		this.tarifJour = tarifJour;
 		this.montantCaution = montantCaution;
 	}

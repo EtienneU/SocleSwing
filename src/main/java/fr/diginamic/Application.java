@@ -9,6 +9,7 @@ import fr.diginamic.services.exemples.Exemple4Service;
 import fr.diginamic.services.exemples.Exemple5Service;
 import fr.diginamic.services.exemples.Exemple6Service;
 import fr.diginamic.services.exemples.ServiceClients;
+import fr.diginamic.services.exemples.ServiceVehicules;
 
 /**
  * Fenêtre principale qui porte les principaux composants graphiques de
@@ -53,5 +54,6 @@ public class Application extends AbstractApplication {
 		addMenuOption(2, "Exemple 6 - Formulaire", new Exemple6Service());
 		
 		addMenuOption(3, "Lister et gérer les clients", new ServiceClients());
+		addMenuOption(4, "Lister et gérer les véhicules", new ServiceVehicules());
 	}
 }

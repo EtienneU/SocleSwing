@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import fr.diginamic.services.exemples.entite.Agence;
 import fr.diginamic.services.exemples.entite.Marque;
 
 /**
@@ -44,6 +45,16 @@ public class MarqueDao extends AbstractDao {
 	
 	public Marque findById(int id) {
 		return em.find(Marque.class, id);
+	}
+	
+	public Marque findByNom(String nom) {
+		TypedQuery<Marque> query = em.createQuery("SELECT m FROM Marque m WHERE m.nom LIKE ?1", Marque.class);
+		query.setParameter(1, "%" + nom + "%");
+		List<Marque> result = query.getResultList();
+		if (result.size() > 0) {
+			return result.get(0);
+		} 
+		return null;
 	}
 	
 	public List<Marque> findByContains(String terme) {

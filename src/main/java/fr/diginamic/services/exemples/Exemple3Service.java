@@ -8,7 +8,7 @@ public class Exemple3Service extends MenuService {
 	public void traitement() {
 		console.clear();
 		
-		console.print("<h1 class='bg-dark-blue'><center>Exemple fond bleu foncé</center></h1>");
+		console.println("<h1 class='bg-dark-blue'><center>Exemple fond bleu foncé</center></h1>");
 		
 		// Utilisation de la classe bg-green pour l'entêtete de la table
 		String html = "<table cellspacing=0>"

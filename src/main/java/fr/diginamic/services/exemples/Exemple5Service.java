@@ -42,7 +42,7 @@ public class Exemple5Service extends MenuService {
 		List<Personne> clients = query.getResultList();
 
 		console.clear();
-		console.print("<h1 class='bg-green'><center>Liste des clients</center></h1>");
+		console.println("<h1 class='bg-green'><center>Liste des clients</center></h1>");
 
 		String html = "<table cellspacing=0>"
 				+ "<tr class='bg-green'><td>&nbsp;</td><td>&nbsp;</td><td>Nom</td><td>Prénom</td></tr>";

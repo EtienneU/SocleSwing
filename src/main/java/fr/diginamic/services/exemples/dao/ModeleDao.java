@@ -46,6 +46,16 @@ public class ModeleDao extends AbstractDao {
 		return em.find(Modele.class, id);
 	}
 	
+	public Modele findByNom(String nom) {
+		TypedQuery<Modele> query = em.createQuery("SELECT m FROM Modele m WHERE m.nom LIKE ?1", Modele.class);
+		query.setParameter(1, "%" + nom + "%");
+		List<Modele> result = query.getResultList();
+		if (result.size() > 0) {
+			return result.get(0);
+		} 
+		return null;
+	}
+	
 	public List<Modele> findByContains(String terme) {
 		TypedQuery<Modele> query = em.createQuery("SELECT m FROM Modele m WHERE m.nom LIKE ?1", Modele.class);
 		query.setParameter(1, "%" + terme + "%");
